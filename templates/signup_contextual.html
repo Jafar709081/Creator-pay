@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ role.capitalize() }} Signup | CreatorPay</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="signup-body">
+    <div class="signup-container">
+        <h1>Create {{ role.capitalize() }} Account</h1>
+        <p>Join the Revenue Distribution Engine as a {{ role }}</p>
+
+        {% if error %}
+        <div class="error-msg">{{ error }}</div>
+        {% endif %}
+
+        <form action="{{ url_for('role_signup', role=role) }}" method="POST">
+            <div class="form-grid">
+                <div class="form-field">
+                    <label for="email">EMAIL ADDRESS</label>
+                    <input type="email" id="email" name="email" placeholder="name@example.com" required>
+                </div>
+                <div class="form-field">
+                    <label for="password">CREATE PASSWORD</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                </div>
+                <div class="form-field">
+                    <label for="confirm_password">CONFIRM PASSWORD</label>
+                    <input type="password" id="confirm_password" name="confirm_password" placeholder="••••••••" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-register haptic-click">Register</button>
+        </form>
+
+        <p class="footer-text">
+            Already have an account? <a href="{{ url_for('role_login', role=role) }}">Log In</a><br>
+            <a href="{{ url_for('index') }}" style="border-bottom: none; opacity: 0.7;">Back to Role Selection</a>
+        </p>
+    </div>
+</body>
+</html>

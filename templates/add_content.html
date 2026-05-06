@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Content | CreatorPay</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="dashboard-body">
+    <div class="main-container">
+        <header>
+            <div class="logo">CreatorPay - Add Content</div>
+            <a href="{{ url_for('creator_dashboard') }}" class="btn-logout haptic-click">Back to Dashboard</a>
+        </header>
+
+        <div class="upload-card">
+            <h1 style="margin-bottom: 30px; font-weight: 800; text-align: center;">Upload New Content</h1>
+            <form action="{{ url_for('add_content') }}" method="POST" enctype="multipart/form-data">
+                <div class="form-field">
+                    <label for="title">Content Title</label>
+                    <input type="text" id="title" name="title" placeholder="Enter a catchy title..." required>
+                </div>
+                <div class="form-field">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" rows="4" placeholder="Tell us about this content..." required></textarea>
+                </div>
+                <div class="form-field">
+                    <label for="file">Select File (Image/Video)</label>
+                    <input type="file" id="file" name="file" required>
+                </div>
+                <button type="submit" class="btn-primary haptic-click">Submit Content</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

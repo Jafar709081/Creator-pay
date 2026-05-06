@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Payout Transparency | CreatorPay</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="dashboard-body transparency-bg">
+    <div class="main-container">
+        <header>
+            <div class="logo">CreatorPay - Community Leaderboard</div>
+            <a href="{{ url_for('logout') }}" class="btn-logout haptic-click">Logout</a>
+        </header>
+
+        <div class="breadcrumbs">Creator Dashboard / Community Payout Transparency</div>
+        
+        <div class="transparency-header">
+            <h1>Community Payout Transparency</h1>
+            <a href="{{ url_for('creator_dashboard') }}" class="btn-transparency haptic-click">Back to Dashboard</a>
+        </div>
+
+        <section class="table-container">
+            <div class="search-box-container">
+                <input type="text" class="search-input" placeholder="Find a creator...">
+            </div>
+            
+            <table class="transparency-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Creator Name</th>
+                        <th>Unique Views</th>
+                        <th>Payout Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for creator in creators %}
+                    <tr class="{{ 'highlight-row' if creator.email == current_email else '' }}">
+                        <td>{{ loop.index }}</td>
+                        <td>
+                            {{ creator.name }}
+                            {% if creator.email == current_email %}
+                            <span class="you-badge">YOU</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ creator.unique_views }}</td>
+                        <td>₹ {{ creator.payout }}</td>
+                        <td>
+                            <div class="status-pill">
+                                {% if creator.status == 'Paid' %}
+                                <div class="halo-paid"></div>
+                                <span class="text-paid">Paid</span>
+                                {% else %}
+                                <div class="dot-blocked"></div>
+                                <span class="text-blocked">{{ creator.status }}</span>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </div>
+</body>
+</html>

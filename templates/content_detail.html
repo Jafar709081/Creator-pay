@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Analytics | CreatorPay</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="dashboard-body">
+    <div class="main-container">
+        <header>
+            <div class="logo">Analytics: {{ content.title }}</div>
+            <a href="{{ url_for('content_library') }}" class="btn-logout haptic-click">Back to Library</a>
+        </header>
+
+        <section class="metric-container" style="margin-top: 40px;">
+            <div class="metric-box">
+                <div class="metric-title">Total Views</div>
+                <div class="metric-value">{{ content.total_views }}</div>
+            </div>
+            <div class="metric-box" style="background-color: var(--primary-accent); border-width: 4px;">
+                <div class="metric-title">Unique Views</div>
+                <div class="metric-value">{{ content.unique_views }}</div>
+                <p style="font-size: 0.7rem; font-weight: 700; margin-top: 5px;">CORE METRIC</p>
+            </div>
+            <div class="metric-box" style="background-color: var(--secondary-accent);">
+                <div class="metric-title">Engagement Ratio</div>
+                <div class="metric-value">{{ content.engagement_ratio }}%</div>
+            </div>
+        </section>
+
+        <section class="nav-hub" style="grid-template-columns: 1fr 1fr;">
+            <div class="nav-card" style="background-color: #fff; padding: 20px;">
+                <div class="metric-title">Likes</div>
+                <div class="metric-value" style="font-size: 1.8rem;">{{ content.likes }}</div>
+            </div>
+            <div class="nav-card" style="background-color: #fff; padding: 20px;">
+                <div class="metric-title">Comments</div>
+                <div class="metric-value" style="font-size: 1.8rem;">{{ content.comments }}</div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

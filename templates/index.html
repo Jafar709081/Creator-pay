@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | CreatorPay</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="dashboard-body" style="background-color: var(--bg-color);">
+    <div class="main-container">
+        <header style="justify-content: center; background-color: transparent; border: none; box-shadow: none;">
+            <h1 style="font-size: 3rem; font-weight: 900; text-transform: uppercase; letter-spacing: -2px;">CreatorPay</h1>
+        </header>
+
+        <div class="gateway-container">
+            <!-- Card 1: Content Viewer (Mint) -->
+            <div class="gateway-card" style="border-color: #000; background-color: var(--primary-accent);">
+                <div class="gateway-icon">▶️</div>
+                <div class="gateway-title">Content Viewer</div>
+                <div class="gateway-desc">Watch, like, and comment on unique creator content.</div>
+                <a href="{{ url_for('role_login', role='user') }}" class="gateway-card-btn haptic-click">Watch Now</a>
+            </div>
+
+            <!-- Card 2: Creator Panel (Sky Blue) -->
+            <div class="gateway-card" style="border-color: #000; background-color: var(--info-accent);">
+                <div class="gateway-icon">📤</div>
+                <div class="gateway-title">Creator Panel</div>
+                <div class="gateway-desc">Upload your content and manage your revenue engine.</div>
+                <a href="{{ url_for('role_login', role='creator') }}" class="gateway-card-btn haptic-click">Submit & Manage</a>
+            </div>
+
+            <!-- Card 3: Platform Admin (Pale Pink) -->
+            <div class="gateway-card" style="border-color: #000; background-color: #FFD1DC;">
+                <div class="gateway-icon">⚙️</div>
+                <div class="gateway-title">Platform Admin</div>
+                <div class="gateway-desc">Monitor distribution, manage transparency, and set revenue pools.</div>
+                <a href="{{ url_for('role_login', role='admin') }}" class="gateway-card-btn haptic-click">Access Distribution</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

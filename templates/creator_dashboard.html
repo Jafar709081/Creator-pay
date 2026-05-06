@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator Hub | CreatorPay</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="dashboard-body">
+    <div class="main-container">
+        <header>
+            <div class="logo">Creator Hub: {{ email }}</div>
+            <a href="{{ url_for('logout') }}" class="btn-logout haptic-click">Logout</a>
+        </header>
+
+        <div class="bento-grid">
+            <!-- Overview Hero Card -->
+            <a href="{{ url_for('creator_overview') }}" class="bento-card bento-card-hero">
+                <div>
+                    <div class="bento-title">Overview</div>
+                    <div class="bento-subtitle">View your metrics, payouts, and history.</div>
+                </div>
+                <div class="bento-icon">📊</div>
+            </a>
+
+            <!-- Add Content Card -->
+            <a href="{{ url_for('add_content') }}" class="bento-card bg-mint">
+                <div class="bento-icon">➕</div>
+                <div class="bento-title">Add Content</div>
+                <div class="bento-subtitle">Upload new media</div>
+            </a>
+
+            <!-- Uploaded Content Card -->
+            <a href="{{ url_for('content_library') }}" class="bento-card bg-blue">
+                <div class="bento-icon">📂</div>
+                <div class="bento-title">Library</div>
+                <div class="bento-subtitle">View analytics and library</div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Optional: Ensure the click delay allows for the animation to be seen
+        document.querySelectorAll('.bento-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // The :active CSS takes care of the visual press
+                // Redirection happens naturally via href
+            });
+        });
+    </script>
+</body>
+</html>

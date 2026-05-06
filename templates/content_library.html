@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Content Library | CreatorPay</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="dashboard-body">
+    <div class="main-container">
+        <header>
+            <div class="logo">CreatorPay - My Library</div>
+            <a href="{{ url_for('creator_dashboard') }}" class="btn-logout haptic-click">Back to Dashboard</a>
+        </header>
+
+        <h1 style="margin-bottom: 30px; font-weight: 800;">Uploaded Content</h1>
+
+        <div class="library-grid">
+            {% for item in library %}
+            <div class="content-item-card" style="background-color: {{ item.color }};">
+                <div class="item-thumb">🎬</div>
+                <div class="item-info">
+                    <div class="item-title">{{ item.title }}</div>
+                    <div class="item-meta">Uploaded on: {{ item.date }}</div>
+                </div>
+                <a href="{{ url_for('content_detail', content_id=item.id) }}" class="btn-logout haptic-click" style="background-color: #fff;">View Stats</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
