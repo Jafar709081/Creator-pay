@@ -13,6 +13,15 @@ app.secret_key = os.getenv('FLASK_SECRET_KEY', 'super_secret_hackathon_key')
 SUPABASE_URL = os.getenv('SUPABASE_URL')
 SUPABASE_KEY = os.getenv('SUPABASE_KEY')
 
+# --- DEBUG LOGGING FOR VERCEL ---
+if not SUPABASE_URL:
+    print("❌ ERROR: SUPABASE_URL is missing from environment!")
+else:
+    print(f"✅ SUPABASE_URL is active: {SUPABASE_URL[:15]}...")
+
+if not SUPABASE_KEY:
+    print("❌ ERROR: SUPABASE_KEY is missing from environment!")
+
 HEADERS = {
     "apikey": SUPABASE_KEY,
     "Authorization": f"Bearer {SUPABASE_KEY}",
