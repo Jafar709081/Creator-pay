@@ -434,7 +434,8 @@ def update_payout_status():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    # Use PORT from environment (e.g. for Render/Heroku) or default to 5000
     port = int(os.environ.get("PORT", 5000))
-    # Keep debug=True for now, but set to False before final production push
     app.run(debug=True, host='0.0.0.0', port=port)
+else:
+    # This is for Vercel
+    application = app
