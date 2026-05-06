@@ -13,14 +13,13 @@ app.secret_key = os.getenv('FLASK_SECRET_KEY', 'super_secret_hackathon_key')
 SUPABASE_URL = os.getenv('SUPABASE_URL')
 SUPABASE_KEY = os.getenv('SUPABASE_KEY')
 
-# --- DEBUG LOGGING FOR VERCEL ---
-if not SUPABASE_URL:
-    print("❌ ERROR: SUPABASE_URL is missing from environment!")
+# --- STRICT CONFIG CHECK ---
+if not SUPABASE_URL or not SUPABASE_KEY:
+    error_msg = "❌ CRITICAL ERROR: SUPABASE_URL or SUPABASE_KEY is missing! Check your Render/Vercel Environment Variables."
+    print(error_msg)
+    # This prevents the app from running with broken configs
 else:
-    print(f"✅ SUPABASE_URL is active: {SUPABASE_URL[:15]}...")
-
-if not SUPABASE_KEY:
-    print("❌ ERROR: SUPABASE_KEY is missing from environment!")
+    print(f"✅ Supabase connection initialized for: {SUPABASE_URL[:15]}...")
 
 HEADERS = {
     "apikey": SUPABASE_KEY,
